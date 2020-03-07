@@ -1,36 +1,40 @@
 import * as React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import {routes} from './routes'
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
 
-export default function BottomTabNavigator({ navigation, route }) {
+
+BottomTab.navigationOption = ({navigation}) =>{
+
+}
+
+export default function BottomTabNavigator({navigation, route}) {
   // Set the header title on the parent stack navigator depending on the
   // currently active tab. Learn more in the documentation:
   // https://reactnavigation.org/docs/en/screen-options-resolution.html
-  navigation.setOptions({ headerTitle: getHeaderTitle(route) });
+
+
+  // navigation.setOptions({headerTitle: getHeaderTitle(route)});
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
-      <BottomTab.Screen
-        name="Cinema"
-        component={HomeScreen}
-        options={{
-          title: 'Get Started',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
-        }}
-      />
-      <BottomTab.Screen
-        name="Profile"
-        component={LinksScreen}
-        options={{
-          title: 'Resources',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
-        }}
-      />
+    <BottomTab.Navigator
+      initialRouteName={INITIAL_ROUTE_NAME}
+    >
+      {routes.map((route, index) => (
+          <BottomTab.Screen
+            key={index}
+            name={route.name}
+            component={route.component}
+            options={{
+              title: route.title,
+              tabBarIcon: ({focused}) => <TabBarIcon focused={focused} name={route.icon}/>,
+            }}
+          />
+        )
+      )}
     </BottomTab.Navigator>
   );
 }
@@ -45,3 +49,4 @@ function getHeaderTitle(route) {
       return 'Profile';
   }
 }
+
