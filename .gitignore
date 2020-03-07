@@ -12,5 +12,5 @@ web-report/
 
 # macOS
 .DS_Store
- yarn.lock
+yarn.lock
 .idea/
