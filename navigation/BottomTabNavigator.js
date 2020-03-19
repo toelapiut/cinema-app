@@ -9,7 +9,7 @@ const INITIAL_ROUTE_NAME = 'Home';
 
 BottomTab.navigationOption = ({navigation}) =>{
 
-}
+};
 
 export default function BottomTabNavigator({navigation, route}) {
   // Set the header title on the parent stack navigator depending on the
@@ -22,15 +22,25 @@ export default function BottomTabNavigator({navigation, route}) {
   return (
     <BottomTab.Navigator
       initialRouteName={INITIAL_ROUTE_NAME}
+      tabBarOptions={{
+        showLabel:false,
+        keyboardHidesTabBar:true,
+        tabStyle:{
+          borderColor:"transparent"
+        },
+      }}
     >
       {routes.map((route, index) => (
           <BottomTab.Screen
+
             key={index}
             name={route.name}
             component={route.component}
+            tabBarOptions={{
+            }}
             options={{
               title: route.title,
-              tabBarIcon: ({focused}) => <TabBarIcon focused={focused} name={route.icon}/>,
+              tabBarIcon: ({focused}) => <TabBarIcon focused={focused} name={route.name}/>,
             }}
           />
         )
