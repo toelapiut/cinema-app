@@ -1,15 +1,19 @@
 import * as React from 'react';
-import { Ionicons } from '@expo/vector-icons';
-
 import Colors from '../constants/Colors';
+import HomeIcon from "./HomeIcon";
+import SearchIcon from "./SearchIcon";
+import SavedIcon from "./SavedIcon";
+import Profile from "./Profile";
 
-export default function TabBarIcon(props) {
-  return (
-    <Ionicons
-      name={props.name}
-      size={30}
-      style={{ marginBottom: -3 }}
-      color={props.focused ? Colors.tabIconSelected : Colors.tabIconDefault}
-    />
-  );
+export default function TabBarIcon({name, focused}) {
+  switch (name) {
+    case'Home':
+      return <HomeIcon focused={focused}/>;
+    case'Search':
+      return <SearchIcon focused={focused}/>;
+    case'Saved':
+      return <SavedIcon focused={focused}/>;
+    case'Profile':
+      return <Profile focused={focused}/>
+  }
 }
