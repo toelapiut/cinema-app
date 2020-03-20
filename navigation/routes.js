@@ -1,5 +1,5 @@
 import LinksScreen from '../screens/LinksScreen';
-import Explore from "../Container/Explore";
+import Explore from "../container/Explore";
 import HomeIcon from "../components/HomeIcon";
 
 

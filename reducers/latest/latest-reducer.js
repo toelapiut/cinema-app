@@ -1,3 +1,5 @@
+import {camelizeKeys} from "../../helpers/helpers";
+
 export const latestReducer = (state = {}, action) => {
   const {response} = action;
   switch (action.type) {
@@ -8,7 +10,7 @@ export const latestReducer = (state = {}, action) => {
     case 'GET_LATEST_MOVIE_SUCCESS':
       const {data} = response;
       return Object.assign({}, state, {
-        ...data,
+        ...camelizeKeys(data),
         loading: false
       });
     case 'GET_LATEST_MOVIE_FAILURE':
