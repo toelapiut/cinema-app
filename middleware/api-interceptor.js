@@ -43,10 +43,9 @@ export const apiInterceptor = ({ dispatch, getState }) => next => action => {
 
 
   return callAPI().then(response => {
-    let data = response.data;
     dispatch(
       Object.assign({}, payload, {
-        data,
+        response,
         payload,
         type: successType
       })
