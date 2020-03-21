@@ -1,8 +1,9 @@
-import {applyMiddleware, compose, createStore} from 'redux';
+import {applyMiddleware, createStore} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import logger from 'redux-logger';
-import {rootReducer, initialState} from '../reducers';
+import {initialState, rootReducer} from '../reducers';
 import {apiInterceptor} from '../middleware';
+import {composeWithDevTools} from 'remote-redux-devtools';
 
 
 export const configureStore = () => {
@@ -25,10 +26,10 @@ export const configureStore = () => {
     middlewareEnhancer
   ];
 
-  const composer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  const  composedEnhancers = composer(
-    ...enhancers
+  const composedEnhancers = composeWithDevTools(
+    ...enhancers,
   );
+
   return createStore(rootReducer, initialState, composedEnhancers);
 };

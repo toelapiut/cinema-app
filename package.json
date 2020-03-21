@@ -23,7 +23,9 @@
     "expo-asset": "~8.0.0",
     "expo-constants": "~8.0.0",
     "expo-font": "~8.0.0",
+    "expo-linear-gradient": "^8.0.0",
     "expo-web-browser": "~8.0.0",
+    "humps": "^2.0.1",
     "prop-types": "^15.7.2",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
@@ -38,6 +40,7 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "remote-redux-devtools": "^0.5.16",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {

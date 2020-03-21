@@ -1,1 +1,8 @@
-export const initialState = {};
+export const initialState = {
+  configurations: {
+    loading: true,
+  },
+  trending: {
+    loading: true,
+  }
+};

@@ -34,6 +34,12 @@ export default function App(props) {
         await Font.loadAsync({
           ...Ionicons.font,
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+          'cinema': require('./assets/fonts/AirbnbCerealBook.ttf'),
+          'cinema-black': require('./assets/fonts/AirbnbCerealBlack.ttf'),
+          'cinema-bold': require('./assets/fonts/AirbnbCerealBold.ttf'),
+          'cinema-extra': require('./assets/fonts/AirbnbCerealExtraBold.ttf'),
+          'cinema-medium': require('./assets/fonts/AirbnbCerealMedium.ttf'),
+          'cinema-thin': require('./assets/fonts/AirbnbCerealLight.ttf'),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service

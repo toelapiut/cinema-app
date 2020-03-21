@@ -31,11 +31,13 @@ export class ProgressiveImage extends Component {
     return (
       <View style={this.props.style}>
         <Image
+          resizeMethod="scale"
           resizeMode="cover"
           style={[styles.image, this.props.style]}
           source={this.props.placeHolderSource}
         />
         <Animated.Image
+          resizeMethod="scale"
           resizeMode="cover"
           style={[styles.image, { opacity: this.state.thumbnailOpacity }, this.props.style]}
           source={this.props.thumbnailSource}
@@ -44,6 +46,7 @@ export class ProgressiveImage extends Component {
         />
         <Animated.Image
           resizeMode="cover"
+          resizeMethod="auto"
           style={[styles.image, { opacity: this.state.imageOpacity }, this.props.style]}
           source={this.props.imageSource}
           onLoad={() => this.onLoadImage()}
