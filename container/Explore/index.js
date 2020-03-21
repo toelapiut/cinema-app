@@ -6,7 +6,8 @@ const mapStateToProps = state => {
   return{
     latest:state.latest,
     trending:state.trending,
-    configurations:state.configurations
+    configurations:state.configurations,
+    genres:state.genre.genres
   }
 };
 

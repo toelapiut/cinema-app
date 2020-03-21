@@ -6,7 +6,7 @@ import List from "../List";
 import {LinearGradient} from "expo-linear-gradient";
 
 const sections = ['Latest', 'Recently', 'Trending', 'Top Rated', 'Upcoming', 'Popular', 'Now Playing']
-export const ExploreScreen = ({trending, latest, config, onRefresh}) => {
+export const ExploreScreen = ({trending, latest, config, onRefresh, genres}) => {
   console.log({'conf-------------':config, con:trending.loading})
   return (
     <ExploreWrap>
@@ -28,6 +28,7 @@ export const ExploreScreen = ({trending, latest, config, onRefresh}) => {
           config={config}
           trending={trending}
           latest={latest}
+          genres={genres}
           item={item}
         />}
         // refreshing={false}

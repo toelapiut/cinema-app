@@ -7,7 +7,7 @@ import Hero from "../../components/Hero";
  *
  * 'Recently', 'Trending', 'Top Rated', 'Upcoming', 'Popular', 'Now Playing'
  */
-export const List = ({config, trending, latest, item}) => {
+export const List = ({config, trending, latest, item, genres}) => {
   switch (item) {
     case 'Trending':
       return <PosterList
@@ -47,6 +47,7 @@ export const List = ({config, trending, latest, item}) => {
     //   />;
     case 'Latest':
       return <Hero
+        genres={genres}
         config={config}
         trending={trending}
         latest={latest}
