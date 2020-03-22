@@ -22,9 +22,10 @@ export const Hero = ({config, trending, latest, genres}) => {
         resizeMode={'cover'}
         style={{width: Layout.window.width, height: 430,     alignSelf: "flex-start"}}
         thumbnailSource={{uri: secureBaseUrl + posterSizes[0] + posterPath}}
-        imageSource={{uri: secureBaseUrl + posterSizes[5] + posterPath}}
+        imageSource={{uri: secureBaseUrl + posterSizes[6] + posterPath}}
       />
     )
+
   }, [handleWithPoster]);
 
   return (

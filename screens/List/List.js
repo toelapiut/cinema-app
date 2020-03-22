@@ -1,27 +1,22 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Text} from 'react-native';
 import PosterList from "../../components/PosterList";
 import Hero from "../../components/Hero";
 import TagList from "../../components/TagList";
 
-/**
- *
- * 'Recently', 'Trending', 'Top Rated', 'Upcoming', 'Popular', 'Now Playing'
- */
-export const List = ({config, trending, latest, item, genres}) => {
-  console.log({item, trending:trending.results, check:item==='Trending'});
-  console.log({genres})
+// const sections = ['Latest', 'Tags','Trending', 'Recently', 'On Air', 'Playing Now', 'Popular', 'Now Playing'];
+export const List = ({config, trending, latest, item, genres, onAir, playingNow, popular, upcoming, topRated}) => {
   switch (item) {
     case 'Tags':
       return <TagList
-        items = {genres}
+        items={genres}
         list={Object.keys(genres)}
       />;
     case 'Trending':
       return <PosterList
         title='Trending now'
         config={config}
-        items = {trending.results}
+        items={trending.results}
         list={Object.keys(trending.results)}
       />;
     // case 'Recently':
@@ -30,24 +25,41 @@ export const List = ({config, trending, latest, item, genres}) => {
     //     config={config}
     //     list={trending || []}
     //   />;
-    // case 'Top Rated':
-    //   return <PosterList
-    //     title='Trending now'
-    //     config={config}
-    //     list={trending || []}
-    //   />;
-    // case 'Popular':
-    //   return <PosterList
-    //     title='Trending now'
-    //     config={config}
-    //     list={trending || []}
-    //   />;
-    // case 'Upcoming':
-    //   return <PosterList
-    //     title='Trending now'
-    //     config={config}
-    //     list={trending || []}
-    //   />;
+    case 'On Air':
+      return <PosterList
+        title='On Air'
+        config={config}
+        items={onAir.results}
+        list={Object.keys(onAir.results)}
+      />;
+    case 'Playing Now':
+      return <PosterList
+        title='Playing Now on Cinema'
+        config={config}
+        items={playingNow.results}
+        list={Object.keys(playingNow.results)}
+      />;
+    case 'Popular':
+      return <PosterList
+        title='Most Requested Movies (popular)'
+        config={config}
+        items={popular.results}
+        list={Object.keys(popular.results)}
+      />;
+    case 'Upcoming':
+      return <PosterList
+        title='Upcoming Movies'
+        config={config}
+        items={upcoming.results}
+        list={Object.keys(upcoming.results)}
+      />;
+    case 'Top Rated':
+      return <PosterList
+        title='Top Rated Movies'
+        config={config}
+        items={topRated.results}
+        list={Object.keys(topRated.results)}
+      />;
     case 'Latest':
       return <Hero
         genres={genres}

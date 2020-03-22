@@ -13,7 +13,7 @@ export const Poster = ({thumb, configurations}) => {
         resizeMode={'contain'}
         style={{width: 134.5, height: 180, borderRadius:5}}
         thumbnailSource={{uri: secureBaseUrl + posterSizes[0] + thumb}}
-        imageSource={{uri: secureBaseUrl + posterSizes[5] + thumb}}
+        imageSource={{uri: secureBaseUrl + posterSizes[4] + thumb}}
       />
     </View>
   )

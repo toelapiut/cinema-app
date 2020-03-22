@@ -5,19 +5,24 @@ import {FlatList, RefreshControl, Text} from "react-native";
 import List from "../List";
 import {LinearGradient} from "expo-linear-gradient";
 
-const sections = ['Latest', 'Tags','Trending', 'Recently', 'Top Rated', 'Upcoming', 'Popular', 'Now Playing']
-export const ExploreScreen = ({trending, latest, config, onRefresh, genres, recent}) => {
+const sections = ['Latest', 'Tags', 'Trending', 'Recently', 'Upcoming', 'On Air', 'Playing Now', 'Popular', 'Top Rated'];
+
+
+export const ExploreScreen = ({
+                                trending, latest, config, onRefresh, genres, recent, onAir, playingNow, popular, upcoming,
+                                topRated
+                              }) => {
   return (
     <ExploreWrap>
       <Header/>
       <LinearGradient
-        colors={['#000', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.2)','transparent']}
+        colors={['rgba(0,0,0,9)', 'rgba(0,0,0,0.6)', 'rgba(0,0,0,0.3)', 'transparent']}
         style={{
           position: 'absolute',
           left: 0,
           top: 50,
           right: 0,
-          height: 25,
+          height: 45,
           zIndex: 1,
         }}
       />
@@ -26,11 +31,16 @@ export const ExploreScreen = ({trending, latest, config, onRefresh, genres, rece
         data={sections}
         extraData={sections}
         renderItem={({item}) => <List
+          popular={popular}
+          upcoming={upcoming}
+          topRated={topRated}
           config={config}
           trending={trending}
           latest={latest}
           genres={genres}
           recent={recent}
+          onAir={onAir}
+          playingNow={playingNow}
           item={item}
         />}
         // refreshing={false}
