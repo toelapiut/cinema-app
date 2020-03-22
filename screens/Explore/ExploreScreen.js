@@ -5,30 +5,32 @@ import {FlatList, RefreshControl, Text} from "react-native";
 import List from "../List";
 import {LinearGradient} from "expo-linear-gradient";
 
-const sections = ['Latest', 'Recently', 'Trending', 'Top Rated', 'Upcoming', 'Popular', 'Now Playing']
-export const ExploreScreen = ({trending, latest, config, onRefresh, genres}) => {
-  console.log({'conf-------------':config, con:trending.loading})
+const sections = ['Latest', 'Tags','Trending', 'Recently', 'Top Rated', 'Upcoming', 'Popular', 'Now Playing']
+export const ExploreScreen = ({trending, latest, config, onRefresh, genres, recent}) => {
   return (
     <ExploreWrap>
       <Header/>
       <LinearGradient
-        colors={[ '#000','rgba(0,0,0,0.7)','transparent']}
+        colors={['#000', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.2)','transparent']}
         style={{
           position: 'absolute',
           left: 0,
-          top:50,
+          top: 50,
           right: 0,
           height: 25,
-          zIndex:1,
+          zIndex: 1,
         }}
       />
+
       {trending.loading ? <Text>Loading</Text> : <FlatList
         data={sections}
+        extraData={sections}
         renderItem={({item}) => <List
           config={config}
           trending={trending}
           latest={latest}
           genres={genres}
+          recent={recent}
           item={item}
         />}
         // refreshing={false}

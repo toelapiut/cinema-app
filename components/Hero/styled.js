@@ -7,8 +7,8 @@ export const ContentWrap = styled.View`
   position:absolute;
   width:${Layout.window.width-10}px;
   z-index:1001;
-  bottom:20px;
-  padding:0 22px 60px;
+  bottom:0px;
+  padding:0 22px 50px;
 `;
 
 export const OverView = styled.Text`

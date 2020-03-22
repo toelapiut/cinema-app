@@ -1,46 +1,51 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import ProgressiveImage from "../ProgressiveImage";
-import {HeroWrapper, ContentWrap, OverView, Title, GenreText} from './styled';
+import {ContentWrap, GenreText, HeroWrapper, OverView, Title} from './styled';
 import {LinearGradient} from 'expo-linear-gradient';
 import Layout from "../../constants/Layout";
-import {View, Text} from "react-native";
-
 
 export const Hero = ({config, trending, latest, genres}) => {
-  console.log({config, trending, latest});
+  const {images: {secureBaseUrl, posterSizes}} = config;
 
   const handleWithPoster = () => {
     if (!!latest.poster_path) {
       return latest
     }
-    return trending.results[Object.keys(trending.results)[0]]
+    return trending.results[Object.keys(trending.results)[Math.round(Math.random() * 20)]]
   };
-  const {images: {secureBaseUrl, posterSizes}} = config;
+
   const {posterPath, title, overview, voteAverage, genreIds} = handleWithPoster();
+
+  const memoProgressiveImage = useMemo(() => {
+    return (
+      <ProgressiveImage
+        resizeMode={'cover'}
+        style={{width: Layout.window.width, height: 430,     alignSelf: "flex-start"}}
+        thumbnailSource={{uri: secureBaseUrl + posterSizes[0] + posterPath}}
+        imageSource={{uri: secureBaseUrl + posterSizes[5] + posterPath}}
+      />
+    )
+  }, [handleWithPoster]);
+
   return (
     <HeroWrapper>
       <LinearGradient
-        colors={['transparent', 'rgba(0,0,0,0.7)', 'rgba(0,0,0,0.9)', '#000']}
+        colors={['transparent', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.8)', 'rgba(0,0,0,0.9)', 'rgba(0,0,0,1)', '#000']}
         style={{
           position: 'absolute',
           left: 0,
           right: 0,
-          height: 300,
+          height: 350,
           zIndex: 1000,
           bottom: 0
         }}
       />
       <ContentWrap>
         <Title>{title}</Title>
-        <GenreText>{genreIds.map((genre)=> genres[genre]['name']).join('  |  ')} </GenreText>
+        <GenreText>{genreIds.map((genre) => genres[genre]['name']).join('  |  ')} </GenreText>
         <OverView numberOfLines={3} ellipsizeMode={'tail'}>{overview}</OverView>
       </ContentWrap>
-      <ProgressiveImage
-        resizeMode={'contain'}
-        style={{width: Layout.window.width, height: 380}}
-        thumbnailSource={{uri: secureBaseUrl + posterSizes[0] + posterPath}}
-        imageSource={{uri: secureBaseUrl + posterSizes[5] + posterPath}}
-      />
+      {memoProgressiveImage}
     </HeroWrapper>
   )
 }

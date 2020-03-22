@@ -9,3 +9,7 @@ export const arrayToObject = (array, keyField) =>
     obj[item[keyField]] = item;
     return obj
   }, {});
+
+export const slicer = (arr, start, end) => {
+  return arr.slice(start, end)
+};

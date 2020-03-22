@@ -2,7 +2,10 @@ import React, {useEffect} from 'react';
 import ExploreScreen from '../../screens/Explore'
 
 
-export const Explore = ({trending, latest, configurations, getLatestAction, getTrendingAction, getConfigurationAction, getGenreAction, genres}) => {
+export const Explore = ({
+                          trending, latest, configurations, getLatestAction, getTrendingAction, getConfigurationAction,
+                          getGenreAction, genres, recent, getOnTheAirAction, getPlayingNowAction, getRecentlyAddedAction,
+                        }) => {
   console.log({trending, latest});
   useEffect(() => {
     (async function requests() {
@@ -10,6 +13,9 @@ export const Explore = ({trending, latest, configurations, getLatestAction, getT
       await getGenreAction();
       await getLatestAction();
       await getTrendingAction();
+      await getRecentlyAddedAction();
+      await getOnTheAirAction();
+      await getPlayingNowAction();
     })()
   }, []);
 
@@ -19,6 +25,7 @@ export const Explore = ({trending, latest, configurations, getLatestAction, getT
 
   return <ExploreScreen
     genres={genres}
+    recent={recent}
     trending={trending}
     latest={latest}
     config={configurations}
