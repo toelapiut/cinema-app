@@ -2,13 +2,24 @@ import React, {useEffect} from 'react';
 import ExploreScreen from '../../screens/Explore'
 
 
-export const Explore = ({trending, latest, configurations, getLatestAction, getTrendingAction, getConfigurationAction, getGenreAction, genres}) => {
+export const Explore = ({
+                          trending, latest, configurations, getLatestAction, getTrendingAction, getConfigurationAction,
+                          getGenreAction, genres, recent, getOnTheAirAction, getPlayingNowAction, getRecentlyAddedAction,
+                          onAir, playingNow, getPopularAction, getUpcomingAction, getTopRatedAction,popular, upcoming,
+                          topRated
+                        }) => {
   console.log({trending, latest});
   useEffect(() => {
     (async function requests() {
       await getConfigurationAction();
       await getGenreAction();
       await getLatestAction();
+      await getRecentlyAddedAction();
+      await getOnTheAirAction();
+      await getPlayingNowAction();
+      await getPopularAction();
+      await getUpcomingAction();
+      await getTopRatedAction();
       await getTrendingAction();
     })()
   }, []);
@@ -18,7 +29,13 @@ export const Explore = ({trending, latest, configurations, getLatestAction, getT
   };
 
   return <ExploreScreen
+    onAir={onAir}
+    playingNow={playingNow}
     genres={genres}
+    popular={popular}
+    upcoming={upcoming}
+    topRated={topRated}
+    recent={recent}
     trending={trending}
     latest={latest}
     config={configurations}
