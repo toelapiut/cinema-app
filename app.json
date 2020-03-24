@@ -25,7 +25,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.cinema.cinema",
+      "buildNumber": "1.0.0",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "com.cinema.cinema",
+      "versionCode": 1
     }
   }
 }
