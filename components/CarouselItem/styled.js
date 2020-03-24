@@ -27,9 +27,7 @@ export const Overview = styled.Text`
   line-height: 18px;
   text-align: left;
   color: #fff;
-
 `;
-
 
 export const Genres = styled.Text`
   font-family: cinema-medium;

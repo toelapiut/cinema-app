@@ -5,7 +5,7 @@ import {LinearGradient} from "expo-linear-gradient";
 import {ContentWrapper, Title, Overview, Genres, CarouselItemWrapper, PlayerWrapper} from "./styled";
 import PlayIcon from "../PlayIcon";
 
-export const CarouselItem = ({thumb, configurations, name, genreIds, genres, overview}) => {
+export const CarouselItem = ({thumb, configurations, name, genreIds, genres, overview, width}) => {
   const {images: {secureBaseUrl, posterSizes}} = configurations;
 
   return (
@@ -26,7 +26,7 @@ export const CarouselItem = ({thumb, configurations, name, genreIds, genres, ove
         <ProgressiveImage
           style={{
 
-            width: 310, height: 220, borderRadius: 5
+            width: width, height: 220, borderRadius: 5
           }}
           thumbnailSource={{uri: secureBaseUrl + posterSizes[0] + thumb}}
           imageSource={{uri: secureBaseUrl + posterSizes[5] + thumb}}
