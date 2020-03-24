@@ -3,12 +3,17 @@ import {FlatList, Animated} from "react-native";
 import {Separator, Title} from "../../theme/theme";
 import {CarouselWrapper, DotWrapper} from './styled';
 import CarouselItem from "../CarouselItem";
-import Layout from "../../constants/Layout";
 
 let POSITION = 310;
+let WIDTH = 320;
+
 export const Carousel = ({title, items, list, config, genres}) => {
+  const [start] = useState(0);
+  const [end] = useState(list.length);
+
   const scrollX = new Animated.Value(0);
   let position = Animated.divide(scrollX, POSITION);
+
   return (
     <CarouselWrapper>
       <Title>{title}</Title>
@@ -16,7 +21,7 @@ export const Carousel = ({title, items, list, config, genres}) => {
         style={{paddingLeft: 20, marginBottom: 30}}
         data={list}
         horizontal={true}
-        snapToInterval={POSITION+10}
+        snapToInterval={WIDTH}
         snapToAlignment='start'
         decelerationRate={0}
         extraData={list}
@@ -40,29 +45,35 @@ export const Carousel = ({title, items, list, config, genres}) => {
         }}
         onScroll={
           Animated.event(
-            [{ nativeEvent: { contentOffset: { x: scrollX } } }]
+            [{nativeEvent: {contentOffset: {x: scrollX}}}]
           )
         }
         keyExtractor={(item, index) => index.toString()}
       />
       <DotWrapper>
-        {list.map((_, i) => {
+        {list.slice(start, end).map((_, i) => {
           let opacity = position.interpolate({
             inputRange: [i - 1, i, i + 1],
             outputRange: [0.3, 1, 0.3],
             extrapolate: 'clamp'
-          })
+          });
+
+          let size = position.interpolate({
+            inputRange: [i - 1, i, i + 1],
+            outputRange: [8, 12, 6],
+            extrapolate: 'clamp'
+          });
 
           return (
             <Animated.View
               key={i}
               style={{
                 opacity,
-                height: 10,
-                width: 10,
+                height: size,
+                width: size,
                 backgroundColor: '#595959',
-                margin: 4,
-                borderRadius: .5 * 10
+                margin: 3,
+                borderRadius: .5 * 12
               }}/>
           )
         })}
