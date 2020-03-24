@@ -30,4 +30,11 @@ export const GenreText = styled.Text`
   color:#11D85D;
   font-size:13px;
   font-family:cinema-thin;
-`
+`;
+
+export const Player = styled.View`
+  position:absolute;
+  z-index:1001;
+  right:20px;
+  bottom:140px;
+`;

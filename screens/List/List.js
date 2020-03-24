@@ -3,9 +3,10 @@ import {Text} from 'react-native';
 import PosterList from "../../components/PosterList";
 import Hero from "../../components/Hero";
 import TagList from "../../components/TagList";
+import Carousel from "../../components/Carousel";
 
 // const sections = ['Latest', 'Tags','Trending', 'Recently', 'On Air', 'Playing Now', 'Popular', 'Now Playing'];
-export const List = ({config, trending, latest, item, genres, onAir, playingNow, popular, upcoming, topRated}) => {
+export const List = ({config, trending, latest, item, genres, onAir, playingNow, popular, upcoming, topRated, recent}) => {
   switch (item) {
     case 'Tags':
       return <TagList
@@ -19,12 +20,14 @@ export const List = ({config, trending, latest, item, genres, onAir, playingNow,
         items={trending.results}
         list={Object.keys(trending.results)}
       />;
-    // case 'Recently':
-    //   return <PosterList
-    //     title='Recently added'
-    //     config={config}
-    //     list={trending || []}
-    //   />;
+    case 'Recently':
+      return <Carousel
+        title='Recently added'
+        genres={genres}
+        config={config}
+        items={recent.results}
+        list={Object.keys(recent.results)}
+      />;
     case 'On Air':
       return <PosterList
         title='On Air'

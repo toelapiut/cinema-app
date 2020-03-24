@@ -1,8 +1,9 @@
 import React, {useMemo} from 'react';
 import ProgressiveImage from "../ProgressiveImage";
-import {ContentWrap, GenreText, HeroWrapper, OverView, Title} from './styled';
+import {ContentWrap, GenreText, HeroWrapper, OverView, Title, Player} from './styled';
 import {LinearGradient} from 'expo-linear-gradient';
 import Layout from "../../constants/Layout";
+import PlayIcon from "../PlayIcon";
 
 export const Hero = ({config, trending, latest, genres}) => {
   const {images: {secureBaseUrl, posterSizes}} = config;
@@ -20,7 +21,7 @@ export const Hero = ({config, trending, latest, genres}) => {
     return (
       <ProgressiveImage
         resizeMode={'cover'}
-        style={{width: Layout.window.width, height: 430,     alignSelf: "flex-start"}}
+        style={{width: Layout.window.width, height: 430, alignSelf: "flex-start"}}
         thumbnailSource={{uri: secureBaseUrl + posterSizes[0] + posterPath}}
         imageSource={{uri: secureBaseUrl + posterSizes[6] + posterPath}}
       />
@@ -41,12 +42,15 @@ export const Hero = ({config, trending, latest, genres}) => {
           bottom: 0
         }}
       />
+      <Player>
+      <PlayIcon/>
+      </Player>
       <ContentWrap>
         <Title>{title}</Title>
         <GenreText>{genreIds.map((genre) => genres[genre]['name']).join('  |  ')} </GenreText>
-        <OverView numberOfLines={3} ellipsizeMode={'tail'}>{overview}</OverView>
+        <OverView numberOfLines={4} ellipsizeMode={'tail'}>{overview}</OverView>
       </ContentWrap>
       {memoProgressiveImage}
     </HeroWrapper>
   )
-}
+};
