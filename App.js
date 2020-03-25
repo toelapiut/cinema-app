@@ -10,6 +10,7 @@ import {configureStore} from './store/configureStore';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
 import {AppearanceProvider} from 'react-native-appearance';
+import {SafeAreaProvider, initialWindowSafeAreaInsets} from 'react-native-safe-area-context';
 
 const store = configureStore();
 
@@ -61,15 +62,17 @@ export default function App(props) {
         {Platform.OS === 'ios' && <StatusBar barStyle='light-content'/>}
         <Provider store={configureStore(store)}>
           <AppearanceProvider>
-            <NavigationContainer theme={DarkTheme} ref={containerRef} initialState={initialNavigationState}>
-              <Stack.Navigator>
-                <Stack.Screen
-                  options={{
-                    headerShown: false,
-                  }}
-                  name="Root" component={BottomTabNavigator}/>
-              </Stack.Navigator>
-            </NavigationContainer>
+            <SafeAreaProvider initialSafeAreaInsets={initialWindowSafeAreaInsets}>
+              <NavigationContainer theme={DarkTheme} ref={containerRef} initialState={initialNavigationState}>
+                <Stack.Navigator>
+                  <Stack.Screen
+                    options={{
+                      headerShown: false,
+                    }}
+                    name="Root" component={BottomTabNavigator}/>
+                </Stack.Navigator>
+              </NavigationContainer>
+            </SafeAreaProvider>
           </AppearanceProvider>
         </Provider>
       </View>

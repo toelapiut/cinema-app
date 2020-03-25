@@ -10,7 +10,6 @@ export const List = ({
                        onPressHandler
                      }) => {
 
-
   const memoHero = useMemo(() => {
     return <Hero
       genres={genres}
