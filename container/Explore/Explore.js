@@ -1,14 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import ExploreScreen from '../../screens/Explore'
 
 
 export const Explore = ({
                           trending, latest, configurations, getLatestAction, getTrendingAction, getConfigurationAction,
                           getGenreAction, genres, recent, getOnTheAirAction, getPlayingNowAction, getRecentlyAddedAction,
-                          onAir, playingNow, getPopularAction, getUpcomingAction, getTopRatedAction,popular, upcoming,
+                          onAir, playingNow, getPopularAction, getUpcomingAction, getTopRatedAction, popular, upcoming,
                           topRated
                         }) => {
-  console.log({trending, latest});
+
   useEffect(() => {
     (async function requests() {
       await getConfigurationAction();
@@ -27,6 +27,7 @@ export const Explore = ({
   const handleRefreshing = () => {
     return null;
   };
+
 
   return <ExploreScreen
     onAir={onAir}

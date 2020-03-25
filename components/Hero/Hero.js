@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 import ProgressiveImage from "../ProgressiveImage";
-import {ContentWrap, GenreText, HeroWrapper, OverView, Title, Player} from './styled';
+import {ContentWrap, GenreText, HeroWrapper, OverView, Player, Title} from './styled';
 import {LinearGradient} from 'expo-linear-gradient';
 import Layout from "../../constants/Layout";
 import PlayIcon from "../PlayIcon";
@@ -43,7 +43,7 @@ export const Hero = ({config, trending, latest, genres}) => {
         }}
       />
       <Player>
-      <PlayIcon/>
+        <PlayIcon/>
       </Player>
       <ContentWrap>
         <Title>{title}</Title>
