@@ -1,3 +1,4 @@
 import {ExploreScreen} from './ExploreScreen';
+import {withHandleModal} from "../../hoc/withHandleModal/withHandleModal";
 
-export default ExploreScreen;
+export default withHandleModal(ExploreScreen);

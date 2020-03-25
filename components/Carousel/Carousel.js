@@ -81,10 +81,3 @@ export const Carousel = ({title, items, list, config, genres}) => {
     </CarouselWrapper>
   )
 };
-// <CarouselItem
-//   configurations={configurations}
-//   genres={genres}
-//   season={item.season}
-//   name={item.title}
-//   thumb={posterPath}
-// />

@@ -1,17 +1,49 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {ExploreWrap} from './styled';
 import Header from "../../components/Header";
-import {FlatList, RefreshControl, Text} from "react-native";
+import {FlatList, Text} from "react-native";
 import List from "../List";
 import {LinearGradient} from "expo-linear-gradient";
+import MovieModal from "../../components/MovieModal";
 
 const sections = ['Latest', 'Tags', 'Trending', 'Recently', 'Upcoming', 'On Air', 'Playing Now', 'Popular', 'Top Rated'];
 
 
 export const ExploreScreen = ({
-                                trending, latest, config, onRefresh, genres, recent, onAir, playingNow, popular, upcoming,
-                                topRated
+                                trending, latest, config, genres, recent, onAir, playingNow, popular, upcoming,
+                                topRated, isVisible, content, onHandleClose, onHandleOpen, onHandleContent
                               }) => {
+
+  const onPressHandler = (item) => {
+    onHandleContent(item);
+    onHandleOpen()
+  };
+
+
+  const memoFlatList = useMemo(() => {
+    return (
+      <FlatList
+        data={sections}
+        extraData={sections}
+        renderItem={({item}) => <List
+          onPressHandler={onPressHandler}
+          popular={popular}
+          upcoming={upcoming}
+          topRated={topRated}
+          config={config}
+          trending={trending}
+          latest={latest}
+          genres={genres}
+          recent={recent}
+          onAir={onAir}
+          playingNow={playingNow}
+          item={item}
+        />}
+        keyExtractor={(item, index) => index.toString()}
+      />
+    )
+  }, [trending.loading]);
+
   return (
     <ExploreWrap>
       <Header/>
@@ -27,34 +59,19 @@ export const ExploreScreen = ({
         }}
       />
 
-      {trending.loading ? <Text>Loading</Text> : <FlatList
-        data={sections}
-        extraData={sections}
-        renderItem={({item}) => <List
-          popular={popular}
-          upcoming={upcoming}
-          topRated={topRated}
-          config={config}
-          trending={trending}
-          latest={latest}
-          genres={genres}
-          recent={recent}
-          onAir={onAir}
-          playingNow={playingNow}
-          item={item}
-        />}
-        // refreshing={false}
-        // refreshControl={
-        //   <RefreshControl
-        //     refreshing={false}
-        //     onRefresh={onRefresh}
-        //   />
-        // }
-        keyExtractor={(item, index) => index.toString()}
+      {trending.loading ? <Text>Loading</Text> : memoFlatList}
+      {isVisible && <MovieModal
+        content={content}
+        onHandleClose={onHandleClose}
+        isVisible={isVisible}
       />}
     </ExploreWrap>
   );
 };
+
+ExploreScreen.defaultProps = {
+  isVisible: false
+}
 
 ExploreScreen.navigationOptions = {
   header: null,

@@ -1,10 +1,10 @@
 import React from 'react';
-import {FlatList, Text} from "react-native";
+import {FlatList} from "react-native";
 import Poster from "../Poster";
 import {Separator, Title} from "../../theme/theme";
 import {PostListWrapper} from './styled';
 
-export const PosterList = ({title, items, list}) => {
+export const PosterList = ({title, items, list, onPressHandler,genres}) => {
   return (
     <PostListWrapper>
       <Title>{title}</Title>
@@ -19,6 +19,9 @@ export const PosterList = ({title, items, list}) => {
           const {posterPath} = items[item];
           return (
             <Poster
+              genres={genres}
+              items={items[item]}
+              onPressHandler={onPressHandler}
               thumb={posterPath}
             />
           )

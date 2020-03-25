@@ -8,7 +8,7 @@ export const TagList = ({list, items}) => {
   return (
     <TagListWrapper>
       <FlatList
-        style={{paddingLeft: 20, marginBottom:40}}
+        style={{paddingLeft: 20, marginBottom: 40}}
         data={list}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
