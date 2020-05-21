@@ -1,5 +1,6 @@
 import {configurationReducer} from "./configurations/configuration-reducer";
 import {notificationReducer} from "./notification/notification-reducer";
+import {airingTodayReducer} from "./airingToday/airing-today-reducer";
 import {playingNowReducer} from "./playingNow/playing-now-reducer";
 import {topRatedReducer} from "./topRated/top-rated-reducer";
 import {upcomingReducer} from "./upcoming/upcoming-reducer";
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   trending: trendingReducer,
   upcoming: upcomingReducer,
   topRated: topRatedReducer,
+  airing: airingTodayReducer,
   playingNow: playingNowReducer,
   notification: notificationReducer,
   configurations: configurationReducer,

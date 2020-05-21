@@ -3,7 +3,6 @@ import {BlurView} from 'expo-blur';
 
 
 export const BlurWrapper = styled(BlurView)`
-  padding:8px 20px;
   border-radius:5px;
 `;
 

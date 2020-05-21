@@ -1,5 +1,6 @@
 import {getRecentlyAddedAction} from './getRecentlyAdded/get-recently-added-action';
 import {getConfigurationAction} from './getConfigurations/get-configuration-action';
+import {getAiringTodayAction} from "./getAiringToday/get-airing-today-action";
 import {getPlayingNowAction} from './getPlayingNow/get-playing-now-action';
 import {getOnTheAirAction} from './getOnTheAir/get-on-the-air-action';
 import {getTopRatedAction} from './getTopRated/get-top-rated-action';
@@ -18,6 +19,7 @@ export {
   getTopRatedAction,
   getUpcomingAction,
   getPlayingNowAction,
+  getAiringTodayAction,
   getRecentlyAddedAction,
   getConfigurationAction,
 }

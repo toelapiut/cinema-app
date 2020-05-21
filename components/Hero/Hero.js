@@ -23,7 +23,7 @@ export const Hero = ({config, trending, latest, genres}) => {
         resizeMode={'cover'}
         style={{width: Layout.window.width, height: 430, alignSelf: "flex-start"}}
         thumbnailSource={{uri: secureBaseUrl + posterSizes[0] + posterPath}}
-        imageSource={{uri: secureBaseUrl + posterSizes[6] + posterPath}}
+        imageSource={{uri: secureBaseUrl + posterSizes[4] + posterPath}}
       />
     )
 
@@ -42,9 +42,6 @@ export const Hero = ({config, trending, latest, genres}) => {
           bottom: 0
         }}
       />
-      <Player>
-        <PlayIcon/>
-      </Player>
       <ContentWrap>
         <Title>{title}</Title>
         <GenreText>{genreIds.map((genre) => genres[genre]['name']).join('  |  ')} </GenreText>

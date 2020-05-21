@@ -14,7 +14,7 @@ export const PosterList = ({title, items, list, onPressHandler,genres}) => {
         horizontal={true}
         extraData={list}
         ItemSeparatorComponent={() => <Separator/>}
-        ListFooterComponent={() => <Separator style={{width: 40}}/>}
+        // ListFooterComponent={() => <Separator style={{width: 40}}/>}
         renderItem={({item}) => {
           const {posterPath} = items[item];
           return (

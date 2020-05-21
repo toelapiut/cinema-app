@@ -60,7 +60,7 @@ export const Carousel = ({title, items, list, config, genres}) => {
 
           let size = position.interpolate({
             inputRange: [i - 1, i, i + 1],
-            outputRange: [8, 12, 6],
+            outputRange: [6, 8, 6],
             extrapolate: 'clamp'
           });
 
@@ -72,8 +72,8 @@ export const Carousel = ({title, items, list, config, genres}) => {
                 height: size,
                 width: size,
                 backgroundColor: '#595959',
-                margin: 3,
-                borderRadius: .5 * 12
+                margin: 2,
+                borderRadius: .5 * 8
               }}/>
           )
         })}

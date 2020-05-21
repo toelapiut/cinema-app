@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SearchHeaderWrapper  = styled.View`
-  padding:20px 20px;
+  padding:20px 20px 10px 20px;
   flex-direction:row;
   align-items:center;
 `;

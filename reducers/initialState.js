@@ -4,5 +4,8 @@ export const initialState = {
   },
   trending: {
     loading: true,
+  },
+  airing: {
+    loading: true,
   }
 };

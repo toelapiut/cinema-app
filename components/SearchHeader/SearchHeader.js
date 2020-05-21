@@ -42,12 +42,13 @@ export const SearchHeader = () => {
           stroke='#7c7c7c'
         />
         <Input
+          keyboardAppearance='dark'
           ref={clearRef}
           onFocus={handleStartAnimation}
           onBlur={handleStopAnimation}
           clearButtonMode='while-editing'
           placeholderTextColor='#7c7c7c'
-          placeholder='Try Mavel’s The Defender'
+          placeholder='Mavel’s The Defender'
         />
 
       </Animated.View>

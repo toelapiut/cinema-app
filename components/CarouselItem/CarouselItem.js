@@ -25,17 +25,18 @@ export const CarouselItem = ({thumb, configurations, name, genreIds, genres, ove
       />
         <ProgressiveImage
           style={{
-
-            width: width, height: 220, borderRadius: 5
+            resizeMode:'cover',
+            paddingTop:10,
+            width: width, height: 220, borderRadius: 2
           }}
           thumbnailSource={{uri: secureBaseUrl + posterSizes[0] + thumb}}
           imageSource={{uri: secureBaseUrl + posterSizes[5] + thumb}}
         />
-      <PlayerWrapper>
-        <PlayIcon
-          wHeight={50}
-        />
-      </PlayerWrapper>
+      {/*<PlayerWrapper>*/}
+      {/*  <PlayIcon*/}
+      {/*    wHeight={50}*/}
+      {/*  />*/}
+      {/*</PlayerWrapper>*/}
       <ContentWrapper>
         <Genres>{genreIds.map((genre) => genres[genre]['name']).join('  •  ')} </Genres>
         <Title>{name}</Title>
