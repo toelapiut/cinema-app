@@ -1,7 +1,6 @@
 
 ###
-
-![](./assets/images/screenshots/logo.png)
+![](https://user-images.githubusercontent.com/28382424/82616382-b083fa00-9bd5-11ea-9639-d41bd23bca55.png)
 
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/toelapiut/cinema/LICENSE)
