@@ -11,7 +11,7 @@ export const ContentWrapper = styled.View`
 `;
 
 export const Title = styled.Text`
-padding:3px 0;
+  padding:3px 0;
   font-family: cinema-bold;
   font-weight: bold;
   font-size: 21px;

@@ -1,6 +1,5 @@
 import React from 'react';
-import {Animated} from 'react-native';
-import {TouchableWithoutFeedback} from "react-native-web";
+import {Animated, TouchableWithoutFeedback} from 'react-native';
 
 export const withSpringAnimation = WrappedComponent => {
   return (props) => {
@@ -8,9 +7,9 @@ export const withSpringAnimation = WrappedComponent => {
 
     const handlePressIn = () => {
       Animated.spring(bouncing, {
-        toValue: .8,
-        friction: 5,
-        tension: 100,
+        toValue: .9,
+        friction: 7,
+        tension: 10,
         useNativeDriver: true
       }).start()
     };
@@ -19,7 +18,7 @@ export const withSpringAnimation = WrappedComponent => {
       Animated.spring(bouncing, {
         toValue: 1,
         friction: 5,
-        tension: 100,
+        tension: 80,
         useNativeDriver: true
       }).start()
     };

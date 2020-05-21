@@ -7,4 +7,4 @@ const mapStateToProps = state => {
     configurations: state.configurations,
   }
 };
-export default withSpringAnimation(connect(mapStateToProps,null)(Poster));
+export default connect(mapStateToProps,null)(Poster);

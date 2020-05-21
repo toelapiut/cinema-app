@@ -32,7 +32,6 @@ export default function BottomTabNavigator({navigation, route}) {
     >
       {routes.map((route, index) => (
           <BottomTab.Screen
-
             key={index}
             name={route.name}
             component={route.component}

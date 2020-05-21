@@ -4,11 +4,11 @@ import Tags from "../Tags";
 import {Separator} from "../../theme/theme";
 import {TagListWrapper} from './styled';
 
-export const TagList = ({list, items}) => {
+export const TagList = ({list, items, styles}) => {
   return (
     <TagListWrapper>
       <FlatList
-        style={{paddingLeft: 20, marginBottom: 40}}
+        style={[{paddingLeft: 20, marginBottom: 40}, styles]}
         data={list}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -27,4 +27,8 @@ export const TagList = ({list, items}) => {
       />
     </TagListWrapper>
   )
+};
+
+TagList.defaultProps = {
+  styles:{}
 };

@@ -1,6 +1,6 @@
 import LinksScreen from '../screens/LinksScreen';
 import Explore from "../container/Explore";
-import HomeIcon from "../components/HomeIcon";
+import Search from "../container/Search";
 
 
 export const routes = [
@@ -11,7 +11,7 @@ export const routes = [
   },
   {
     name: "Search",
-    component: LinksScreen,
+    component: Search,
     title: 'Search',
   },
   {
