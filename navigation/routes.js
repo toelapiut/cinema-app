@@ -1,13 +1,13 @@
 import LinksScreen from '../screens/LinksScreen';
-import Explore from "../container/Explore";
 import Search from "../container/Search";
+import {ExploreStackNavigator} from "./ExploreStack";
 
 
 export const routes = [
   {
-    name: "Home",
-    component: Explore,
-    title: 'Home',
+    name: "Explore",
+    component: ExploreStackNavigator,
+    title: 'Explore',
   },
   {
     name: "Search",

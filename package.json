@@ -26,6 +26,7 @@
     "expo-font": "~8.0.0",
     "expo-linear-gradient": "^8.0.0",
     "expo-web-browser": "~8.0.0",
+    "firebase": "^7.14.5",
     "humps": "^2.0.1",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
