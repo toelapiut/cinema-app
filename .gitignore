@@ -17,3 +17,4 @@ web-report/
 .env
 yarn.lock
 *.log
+*.env

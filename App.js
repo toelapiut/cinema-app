@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {Platform, StatusBar, StyleSheet, View} from 'react-native';
+import {Asset} from 'expo-asset';
 import {SplashScreen} from 'expo';
 import * as Font from 'expo-font';
 import {Ionicons} from '@expo/vector-icons';
@@ -11,17 +12,11 @@ import BottomTabNavigator from './navigation/BottomTabNavigator';
 import AuthNavigator from './navigation/AuthNavigator';
 import useLinking from './navigation/useLinking';
 import {AppearanceProvider} from 'react-native-appearance';
-import {initialWindowSafeAreaInsets, SafeAreaProvider} from 'react-native-safe-area-context';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import firebase from 'firebase';
 import "firebase/firestore";
 import {firebaseConfig} from './config';
 import {AuthContext} from './context';
-import * as GoogleSignIn from 'expo-google-sign-in'
-
-
-console.log({firebaseConfig})
-
-console.log({name: firebase.apps})
 
 const store = configureStore();
 const Stack = createStackNavigator();
@@ -38,7 +33,6 @@ const App = (props) => {
   try {
     firebase.initializeApp(firebaseConfig)
   } catch (err) {
-    // we skip the “already exists” message which is
     if (!/already exists/.test(err.message)) {
       console.error('Firebase initialization error raised', err.stack)
     }
@@ -52,7 +46,10 @@ const App = (props) => {
 
         // Load our initial navigation state
         setInitialNavigationState(await getInitialState());
-
+        await Asset.loadAsync([
+          require('./assets/images/splash.png'),
+          require('./assets/images/bg.png'),
+        ]);
         // Load fonts
         await Font.loadAsync({
           ...Ionicons.font,
@@ -82,10 +79,9 @@ const App = (props) => {
 
 
   const authContext = React.useMemo(() => {
-    const {signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, signOut, currentUser: {updateEmail, updatePassword, reauthenticateWithCredential}} = firebase.auth()
     return {
       login: (email, password) => {
-        signInWithEmailAndPassword(email, password).then(({refreshToken}) => {
+        firebase.auth().signInWithEmailAndPassword(email, password).then(({refreshToken}) => {
           console.log({refreshToken})
           setLoading(false)
           setUserToken(refreshToken)
@@ -94,25 +90,8 @@ const App = (props) => {
           setUserToken(null)
         })
       },
-      googleLogin: async () => {
-        const {askForPlayServicesAsync} = GoogleSignIn
-        try {
-          await askForPlayServicesAsync();
-          const {type, user: {auth: {idToken, accessToken}}} = await GoogleSignIn.signInAsync();
-          const {GoogleAuthProvider, Auth: {Persistence: {LOCAL}}} = firebase.auth
-          const {setPersistence, signInWithCredential} = firebase.auth()
-          if (type === 'success') {
-            await setPersistence(LOCAL);
-            const credential = GoogleAuthProvider.credential(idToken, accessToken,);
-            const googleProfileData = await signInWithCredential(credential);
-            console.log({googleProfileData})
-          }
-        } catch ({message}) {
-          alert('login: Error:' + message);
-        }
-      },
-      createUserWithEmailAndPassword: (email, password) => {
-        createUserWithEmailAndPassword(email, password).then(({refreshToken}) => {
+      createAccount: (email, password) => {
+        firebase.auth().createUserWithEmailAndPassword(email, password).then(({refreshToken}) => {
           console.log({refreshToken})
           setLoading(false)
           setUserToken(refreshToken)
@@ -121,8 +100,8 @@ const App = (props) => {
           setUserToken(null)
         })
       },
-      signOut: () => {
-        signOut().then(() => {
+      userSignOut: () => {
+        firebase.auth().signOut().then(() => {
           setLoading(false)
           setUserToken(null)
         }).catch(() => {
@@ -130,23 +109,23 @@ const App = (props) => {
           setUserToken(null)
         });
       },
-      updateEmail: (email) => {
-        updateEmail(email).catch(() => {
+      updateUserEmail: (email) => {
+        firebase.auth().currentUser.updateEmail(email).catch(() => {
           console.log('Updating user email Failed')
         })
       },
-      updatePassword: (newPassword) => {
-        updatePassword(newPassword).catch((error) => {
+      updateUserPassword: (newPassword) => {
+        firebase.auth().currentUser.updatePassword(newPassword).catch((error) => {
           console.log('Updating user email Failed')``
         });
       },
-      sendPasswordResetEmail: (email) => {
-        sendPasswordResetEmail(email).catch((error) => {
+      sendUserPasswordResetEmail: (email) => {
+        firebase.auth().sendPasswordResetEmail(email).catch((error) => {
           console.log('Updating user email Failed')``
         });
       },
-      reauthenticateWithCredential: (credential) => {
-        reauthenticateWithCredential(credential).then(() => {
+      reauthenticateUserWithCredential: (credential) => {
+        firebase.auth().currentUser.reauthenticateWithCredential(credential).then(() => {
           return true
         }).catch(() => {
           return false
@@ -157,8 +136,7 @@ const App = (props) => {
 
 
   const checkUserAuthentication = () => {
-    const {onAuthStateChanged} = firebase.auth()
-    onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
         const {refreshToken} = user;
         setUserToken(refreshToken)
@@ -171,14 +149,13 @@ const App = (props) => {
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return null;
   } else {
-    console.log({userToken})
     return (
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle='light-content'/>}
         <Provider store={configureStore(store)}>
           <AuthContext.Provider value={authContext}>
             <AppearanceProvider>
-              <SafeAreaProvider initialSafeAreaInsets={initialWindowSafeAreaInsets}>
+              <SafeAreaProvider>
                 <NavigationContainer theme={DarkTheme} ref={containerRef} initialState={initialNavigationState}>
                   {userToken
                     ? <Stack.Navigator>

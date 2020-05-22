@@ -1,9 +1,10 @@
 import * as React from "react"
 import Svg, {Defs, G, Path} from "react-native-svg"
+import PropTypes from 'prop-types';
 
-export const Brand = () => {
+export const Brand = ({width, height}) => {
   return (
-    <Svg width={148} height={29} viewBox="0 0 2111.999 440">
+    <Svg width={width} height={height} viewBox="0 0 2111.999 440">
       <Defs/>
       <G filter="url(#prefix__a)">
         <Path
@@ -16,3 +17,13 @@ export const Brand = () => {
     </Svg>
   )
 };
+
+Brand.defaultProps = {
+  width: 148,
+  height: 29
+}
+
+Brand.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number
+}

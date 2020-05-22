@@ -1,7 +1,7 @@
 
 ###
 
-<img src="./assets/images/screenshots/logo.png" alt="Cinema" style="width:200px">
+<img src="./assets/images/screenshots/logo.png" alt="Cinema" style="width:100px">
 
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/toelapiut/cinema/LICENSE)
