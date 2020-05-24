@@ -139,7 +139,7 @@ const App = (props) => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         const {refreshToken} = user;
-        setUserToken(refreshToken)
+        // setUserToken(refreshToken)
       } else {
         setUserToken(null)
       }

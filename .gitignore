@@ -18,3 +18,4 @@ web-report/
 yarn.lock
 *.log
 *.env
+.expo-shared/
