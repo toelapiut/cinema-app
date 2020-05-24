@@ -120,10 +120,12 @@ const App = (props) => {
           console.log('Updating user email Failed')``
         });
       },
-      sendUserPasswordResetEmail: (email) => {
-        firebase.auth().sendPasswordResetEmail(email).catch((error) => {
-          console.log('Updating user email Failed')``
-        });
+      sendUserPasswordResetEmail: async (email) => {
+        try {
+          return await firebase.auth().sendPasswordResetEmail(email)
+        } catch (e) {
+          return e
+        }
       },
       reauthenticateUserWithCredential: (credential) => {
         firebase.auth().currentUser.reauthenticateWithCredential(credential).then(() => {

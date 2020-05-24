@@ -10,7 +10,7 @@ const {window: {width}} = Layout
 const placeholderColor = '#A2A2A2'
 const iconSize = 24
 
-export const SignInScreen = ({email, password, onHandleEmail, onHandleSubmit, onHandlePassword, error, loading}) => {
+export const SignInScreen = ({email, password, onHandleEmail, onHandleSubmit, onHandlePassword, error, loading, onHandleForgotPassword}) => {
   const passwordRef = useRef(null)
 
   return (
@@ -61,7 +61,7 @@ export const SignInScreen = ({email, password, onHandleEmail, onHandleSubmit, on
           returnKeyType={'done'}
         />
       </View>
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={onHandleForgotPassword} disable={loading}>
         <View style={styles.forgotPasswordContainer}>
           <Text style={styles.forgotPasswordText}>Forgot Password</Text>
         </View>
@@ -120,5 +120,6 @@ SignInScreen.propTypes = {
   password: PropTypes.string.isRequired,
   onHandleEmail: PropTypes.func.isRequired,
   onHandleSubmit: PropTypes.func.isRequired,
-  onHandlePassword: PropTypes.func.isRequired
+  onHandlePassword: PropTypes.func.isRequired,
+  onHandleForgotPassword: PropTypes.func.isRequired
 }
