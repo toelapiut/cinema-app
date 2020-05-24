@@ -1,11 +1,10 @@
 import React from 'react';
-import {Image, SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
+import {Image, SafeAreaView, StatusBar, StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
 import Brand from "../../components/Brand";
 import Layout from "../../constants/Layout";
 import {BlurView} from 'expo-blur';
 import {LinearGradient} from 'expo-linear-gradient';
 import {ButtonText} from './styled';
-import {TouchableWithoutFeedback} from "react-native-web";
 import PropTypes from 'prop-types';
 
 const {window: {height, width}} = Layout;
@@ -45,8 +44,8 @@ export const BoardScreen = ({onHandleLogin, onHandleSignUp}) => {
 }
 
 BoardScreen.propTypes = {
-  onHandleLogin: PropTypes.func,
-  onHandleSignUp: PropTypes.func
+  onHandleLogin: PropTypes.func.isRequired,
+  onHandleSignUp: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({

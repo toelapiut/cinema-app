@@ -20,5 +20,5 @@ export const Board = ({navigation}) => {
 }
 
 Board.propTypes = {
-  PropTypes: PropTypes.navigation
+  navigation: PropTypes.func.isRequired
 }

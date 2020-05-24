@@ -9,10 +9,6 @@ export default (credential) => {
     },
     password: {
       presence: true,
-      length: {
-        minimum: 6,
-        message: "must be at least 6 characters"
-      }
     }
   }
   return validate(credential, constraints);

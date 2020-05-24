@@ -21,6 +21,15 @@ import {AuthContext} from './context';
 const store = configureStore();
 const Stack = createStackNavigator();
 
+try {
+  firebase.initializeApp(firebaseConfig)
+} catch (err) {
+  if (!/already exists/.test(err.message)) {
+    console.error('Firebase initialization error raised', err.stack)
+  }
+}
+
+let db = firebase.firestore()
 
 const App = (props) => {
   const [isLoadingComplete, setLoadingComplete] = React.useState(false);
@@ -30,13 +39,6 @@ const App = (props) => {
   const containerRef = React.useRef();
   const {getInitialState} = useLinking(containerRef);
 
-  try {
-    firebase.initializeApp(firebaseConfig)
-  } catch (err) {
-    if (!/already exists/.test(err.message)) {
-      console.error('Firebase initialization error raised', err.stack)
-    }
-  }
 
   // Load any resources or data that we need prior to rendering the app
   React.useEffect(() => {
@@ -83,7 +85,6 @@ const App = (props) => {
       login: async (email, password) => {
         try {
           const {user: {refreshToken}} = await firebase.auth().signInWithEmailAndPassword(email, password)
-          console.log({refreshToken})
           setLoading(false)
           setUserToken(refreshToken)
           return userToken
@@ -91,15 +92,27 @@ const App = (props) => {
           return error
         }
       },
-      createAccount: (email, password) => {
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(({user: {refreshToken}}) => {
-          console.log({refreshToken})
+      createAccount: async ({email, password, firstName, lastName}) => {
+        try {
+          const {user: {refreshToken, uid}} = await firebase.auth().createUserWithEmailAndPassword(email, password)
+          const profile = await db
+            .collection('User')
+            .doc(uid)
+            .set({
+              first_name: firstName,
+              last_name: lastName,
+              email: email,
+              avatar: null,
+              bio: null,
+              phone_number: null,
+              dob: null,
+            })
           setLoading(false)
           setUserToken(refreshToken)
-        }).catch(e => {
-          setLoading(false)
-          setUserToken(null)
-        })
+          return profile;
+        } catch (e) {
+          return e
+        }
       },
       userSignOut: () => {
         firebase.auth().signOut().then(() => {
@@ -142,7 +155,7 @@ const App = (props) => {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         const {refreshToken} = user;
-        // setUserToken(refreshToken)
+        setUserToken(refreshToken)
       } else {
         setUserToken(null)
       }
