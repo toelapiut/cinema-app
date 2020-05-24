@@ -2,15 +2,15 @@ import {Explore} from './Explore';
 import {connect} from 'react-redux';
 import {
   getConfigurationAction,
-  getRecentlyAddedAction,
-  getPlayingNowAction,
-  getTrendingAction,
-  getOnTheAirAction,
-  getUpcomingAction,
-  getTopRatedAction,
-  getPopularAction,
-  getLatestAction,
   getGenreAction,
+  getLatestAction,
+  getOnTheAirAction,
+  getPlayingNowAction,
+  getPopularAction,
+  getRecentlyAddedAction,
+  getTopRatedAction,
+  getTrendingAction,
+  getUpcomingAction,
 } from "../../actions";
 
 const mapStateToProps = state => {

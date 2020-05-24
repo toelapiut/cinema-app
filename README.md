@@ -1,6 +1,7 @@
 
 ###
-![](https://user-images.githubusercontent.com/28382424/82616382-b083fa00-9bd5-11ea-9639-d41bd23bca55.png)
+
+![](./assets/images/screenshots/logo.png)
 
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/toelapiut/cinema/LICENSE)
@@ -15,10 +16,8 @@ The application offers the most interesting movies around the world and free dir
 collection of films of all genres. Everything is completely free.
 
 
-![](./assets/images/screenshots/signup.png)
-![](./assets/images/screenshots/onboarding.png)
+![](./assets/images/screenshots/boarding.png)
 ![](./assets/images/screenshots/main.png)
-![](./assets/images/screenshots/search.png)
 
 ## Getting Started
 
@@ -48,7 +47,7 @@ Then enter into the cinema directory and use install the packages using your fav
 ```npm```. 
 After which you can run the command 
 
-```cookie
+```
 expo start:android
 expo start:ios
 expo start:web --https
@@ -59,7 +58,8 @@ expo start:web --https
 * [React Native](https://reactnative.dev/) - The hybrid framework used
 * [React Navigation](https://rometools.github.io/rome/) - Used in navigation
 * [Styled Component](https://styled-components.com/docs/basics#react-native) - Used in the styling of components
-* [React Native Reanimated](https://rometools.github.io/rome/) - Used to Animate components without dropping frames
+* [React Native Reanimated](https://software-mansion.github.io/react-native-reanimated/) - Used to Animate components without dropping frames
+* [Firestore](https://console.firebase.google.com/) -Used as DB
 * [Yarn](https://yarnpkg.com/) - Dependency Management
 
 ## Contributing

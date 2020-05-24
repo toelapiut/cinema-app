@@ -24,8 +24,10 @@
     "expo-blur": "^8.0.0",
     "expo-constants": "~8.0.0",
     "expo-font": "~8.0.0",
+    "expo-google-sign-in": "~8.0.0",
     "expo-linear-gradient": "^8.0.0",
     "expo-web-browser": "~8.0.0",
+    "firebase": "^7.14.5",
     "humps": "^2.0.1",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
@@ -43,7 +45,9 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "remote-redux-devtools": "^0.5.16",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "typy": "^3.3.0",
+    "validate.js": "^0.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

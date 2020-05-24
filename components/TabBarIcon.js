@@ -7,7 +7,7 @@ import Profile from "./Profile";
 
 export default function TabBarIcon({name, focused}) {
   switch (name) {
-    case'Home':
+    case'Explore':
       return <HomeIcon focused={focused}/>;
     case'Search':
       return <SearchIcon focused={focused}/>;
