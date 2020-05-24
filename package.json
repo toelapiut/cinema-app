@@ -45,7 +45,9 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "remote-redux-devtools": "^0.5.16",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "typy": "^3.3.0",
+    "validate.js": "^0.13.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

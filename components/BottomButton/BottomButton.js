@@ -1,15 +1,18 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native'
+import {ActivityIndicator, StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native'
 import Layout from "../../constants/Layout";
 import PropTypes from 'prop-types';
 
 
 const {window: {width}} = Layout
-export const BottomButton = ({label, buttonStyle, textStyle, onSubmit}) => {
+export const BottomButton = ({label, buttonStyle, textStyle, onSubmit, loading}) => {
   return (
-    <TouchableWithoutFeedback onPress={onSubmit}>
+    <TouchableWithoutFeedback onPress={onSubmit} disabled={loading}>
       <View style={[styles.container, buttonStyle]}>
-        <Text style={[styles.buttonText, textStyle]}>{label}</Text>
+        {loading
+          ? <ActivityIndicator size="small" color="#fff"/>
+          : <Text style={[styles.buttonText, textStyle]}>{label}</Text>
+        }
       </View>
     </TouchableWithoutFeedback>
   )
