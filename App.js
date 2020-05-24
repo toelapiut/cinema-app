@@ -81,7 +81,7 @@ const App = (props) => {
   const authContext = React.useMemo(() => {
     return {
       login: (email, password) => {
-        firebase.auth().signInWithEmailAndPassword(email, password).then(({refreshToken}) => {
+        firebase.auth().signInWithEmailAndPassword(email, password).then(({user: {refreshToken}}) => {
           console.log({refreshToken})
           setLoading(false)
           setUserToken(refreshToken)
@@ -91,7 +91,7 @@ const App = (props) => {
         })
       },
       createAccount: (email, password) => {
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(({refreshToken}) => {
+        firebase.auth().createUserWithEmailAndPassword(email, password).then(({user: {refreshToken}}) => {
           console.log({refreshToken})
           setLoading(false)
           setUserToken(refreshToken)

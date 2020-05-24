@@ -7,17 +7,18 @@ import BottomButton from "../../components/BottomButton";
 const {window: {width}} = Layout
 const placeholderColor = '#A2A2A2'
 
-export const SignInScreen = () => {
+export const SignInScreen = ({email, password, onHandleEmail, onHandleSubmit, onHandlePassword}) => {
   const passwordRef = useRef(null)
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', paddingBottom: 50}}>
+    <View style={styles.container}>
       <Brand
         width={180}
         height={90}
       />
       <TextInput
         clearButtonMode='while-editing'
+        value={email}
         allowFontScaling
         multiline={false}
         autoCorrect={false}
@@ -30,10 +31,12 @@ export const SignInScreen = () => {
         style={styles.textInput}
         keyboardAppearance='dark'
         returnKeyType={'next'}
+        onChangeText={onHandleEmail}
         onSubmitEditing={() => passwordRef.current.focus()}
       />
       <TextInput
         ref={passwordRef}
+        value={password}
         clearButtonMode='while-editing'
         allowFontScaling
         secureTextEntry
@@ -45,6 +48,7 @@ export const SignInScreen = () => {
         keyboardAppearance='dark'
         placeholderTextColor={placeholderColor}
         style={styles.textInput}
+        onChangeText={onHandlePassword}
         returnKeyType={'done'}
       />
       <TouchableWithoutFeedback>
@@ -53,7 +57,7 @@ export const SignInScreen = () => {
         </View>
       </TouchableWithoutFeedback>
       <BottomButton
-        onSubmit={() => null}
+        onSubmit={onHandleSubmit}
         label='Sign In'
       />
     </View>
@@ -61,6 +65,12 @@ export const SignInScreen = () => {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 50
+  },
   textInput: {
     backgroundColor: '#303030',
     height: 48,
