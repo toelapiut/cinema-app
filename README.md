@@ -1,7 +1,7 @@
 
 ###
 
-<img src="./assets/images/screenshots/logo.png" alt="Cinema" style="width:100px">
+![](./assets/images/screenshots/logo.png)
 
 ![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/toelapiut/cinema/LICENSE)
@@ -16,8 +16,7 @@ The application offers the most interesting movies around the world and free dir
 collection of films of all genres. Everything is completely free.
 
 
-![](./assets/images/screenshots/signup.png)
-![](./assets/images/screenshots/onboarding.png)
+![](./assets/images/screenshots/boarding.png)
 ![](./assets/images/screenshots/main.png)
 ![](./assets/images/screenshots/search.png)
 
