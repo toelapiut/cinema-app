@@ -18,7 +18,6 @@ collection of films of all genres. Everything is completely free.
 
 ![](./assets/images/screenshots/boarding.png)
 ![](./assets/images/screenshots/main.png)
-![](./assets/images/screenshots/search.png)
 
 ## Getting Started
 
